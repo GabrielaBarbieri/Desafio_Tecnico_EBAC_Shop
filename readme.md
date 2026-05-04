@@ -85,24 +85,24 @@ Ter o Git configurado na máquina para clonar o repositório
 npm create playwright
 ```
 
-Durante a instalação, algumas perguntas serão exibidas:
-
-Deseja prosseguir?
+**Durante a instalação, algumas perguntas serão exibidas:**
+\*\*
+**Deseja prosseguir?**
 Responda Y (sim)
 
-Qual linguagem utilizar?
+**Qual linguagem utilizar?**
 Selecione TypeScript
 
-Onde os testes serão criados?
+**Onde os testes serão criados?**
 Defina a pasta e2e, pois o projeto utilizará uma separação por tipos de teste (explicada posteriormente)
 
-Configurar GitHub Actions?
+**Configurar GitHub Actions?**
 Responda N (Não)
 
-Instalar os browsers do Playwright?
+**Instalar os browsers do Playwright?**
 Responda Y (sim)
 
-Estrutura gerada
+**Estrutura gerada**
 
 Ao final da instalação, serão criados arquivos importantes como:
 
@@ -269,14 +269,14 @@ Esse comando serve para visualizar o log do teste.
 
 ### Evidência dos testes
 
-Execução do teste no modo headless
+**Execução do teste no modo headless**
 
 ![Execução do teste no modo headless](./evidencias/evidencia_headless.png)
 
-Execução do teste no modo headed com debug
+**Execução do teste no modo headed com debug**
 
 ![Execução do teste no modo headed com debug](./evidencias/evidencia_headed.png)
 
-Report do teste
+**Report do teste**
 
 ![Report do teste](./evidencias/report.png)
