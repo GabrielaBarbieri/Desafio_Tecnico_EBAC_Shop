@@ -1,0 +1,20 @@
+{
+  "name": "desafio_tecnico_ebac_shop",
+  "version": "1.0.0",
+  "description": "- **Teste 01:** Registro de usuário (Register) \r - **Teste 02:** Login de usuário \r - **Teste 03:** Tentativa de adicionar produto ao carrinho sem selecionar tamanho e cor\r - **Teste 04:** Redução da quantidade de itens no carrinho \r - **Teste 05:** Remoção de item do carrinho\r - **Teste 06:** Validação de cupom de desconto\r - **Teste 07:** Validação do valor total do carrinho\r - **Teste 08:** Validar controle de quantidade máxima no estoque \r - **Teste 09:** Verificar se o botão “View all” está funcionando corretamente",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  }
+}
