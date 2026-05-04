@@ -1,6 +1,6 @@
 # Casos de Teste Mapeados
 
-Site de teste utilizado: lojaebac.ebaconline.art.b
+Site de teste utilizado: http://lojaebac.ebaconline.art.br/
 
 ## Cenários de Teste
 
@@ -16,8 +16,6 @@ Site de teste utilizado: lojaebac.ebaconline.art.b
 - **Teste 08:** Validar controle de quantidade máxima no estoque
 - **Teste 09:** Verificar se o botão “View all” está funcionando corretamente
 
----
-
 ## Critério de Escolha dos Testes
 
 Os cenários foram selecionados com base no **impacto direto ao cliente** e no **risco para o negócio**, especialmente relacionados a:
@@ -25,21 +23,15 @@ Os cenários foram selecionados com base no **impacto direto ao cliente** e no *
 - Prejuízos financeiros
 - Perda de confiança na plataforma
 
----
-
 ## Análise de Impacto
 
 ### Abandono de Compra
 
 Caso funcionalidades críticas não funcionem corretamente, por exemplo, adicionar ao carrinho, login, aplicar de cupom, há um alto risco de o cliente desistir da compra.
 
----
-
 ### Inconsistência de Valores no Front-end
 
 Erros no cálculo do carrinho, assim como a aplicação incorreta de cupons de desconto, podem gerar divergências nos valores apresentados ao usuário. Essas inconsistências impactam diretamente a confiança do cliente na empresa, além de poderem resultar em prejuízos financeiros. Além disso, o controle da quantidade máxima em estoque também foi identificado como um cenário crítico. Falhas nessa validação podem permitir a venda de itens acima da disponibilidade real, gerando problemas operacionais, insatisfação do cliente e possíveis perdas financeiras.
-
----
 
 ## Classificação de Risco
 
@@ -48,8 +40,6 @@ Todos os cenários foram classificados como **ALTO RISCO**, pois impactam direta
 - Experiência do usuário
 - Conversão de vendas
 - Integridade dos valores
-
----
 
 ## Testes Não Priorizados
 
@@ -60,8 +50,6 @@ Todos os cenários foram classificados como **ALTO RISCO**, pois impactam direta
 ### Justificativa
 
 Embora esses cenários sejam relevantes, não são críticos para o fluxo principal do sistema, pois não impactam financeiramente e ainda é possível o usuário realizar a compra no site corretamente. Por exemplo, a lista de desejos é uma funcionalidade secundária que auxilia o cliente na compra, mas não o impede de comprar. Filtro de pesquisa e ordenação de produtos também auxiliam na experiência do cliente, no entanto não gera impactos críticos.
-
----
 
 ## Desafio de Investigação
 
@@ -80,8 +68,6 @@ Possível falha no funcionamento do filtro de tela.
    - Acionar o time de **back-end**
    - Solicitar apoio na validação da consulta
 
----
-
 ## Automação de Testes
 
 Para a automação de testes foi escolhida a ferramenta Playwright + Typescript que é a ferramenta utilizada pela empresa. Além disso, a ferramenta Playwright é uma ótima escolha
@@ -95,82 +81,108 @@ Ter NodeJS instalado na máquina
 Ter uma ferramenta de edição de código instalada, como, Visual Studio Code (VSCode)
 Ter o Git configurado na máquina para clonar o repositório
 
-Comandos:
+```
 npm create playwright
+```
 
-Esse comando serve para instalar o playwright na máquina. Algumas
-perguntas serão feitas durante a instalação, como, você gostaria de proceder? Basta digitar
-Y, para sim. Além disso, escolha o typescript como linguagem e coloque os testes e2e na pasta
-e2e, pois foi feita uma divisão de testes que será explicada em breve. Para a pergunta relacionada ao GithubActions responda false e por fim para pergunta a respeito da instalação dos browsers responda Y.
+Durante a instalação, algumas perguntas serão exibidas:
 
-Após finalizado esse comando, teremos os arquivos, como, package.json e playwright.config.ts que serão fundamentais para configuração do nosso projeto. Além disso, foi gerado uma pasta e2e que pode ser excluída do projeto, pois só tem um teste de exemplo para conhecer a ferramenta.
+Deseja prosseguir?
+Responda Y (sim)
+
+Qual linguagem utilizar?
+Selecione TypeScript
+
+Onde os testes serão criados?
+Defina a pasta e2e, pois o projeto utilizará uma separação por tipos de teste (explicada posteriormente)
+
+Configurar GitHub Actions?
+Responda N (Não)
+
+Instalar os browsers do Playwright?
+Responda Y (sim)
+
+Estrutura gerada
+
+Ao final da instalação, serão criados arquivos importantes como:
+
+package.json → gerenciamento de dependências do projeto
+playwright.config.ts → configuração principal do Playwright
+
+Também será criada uma pasta e2e, que contém um teste de exemplo gerado automaticamente. A pasta e2e pode ser removida, pois ela contém apenas um teste padrão utilizado para demonstrar a ferramenta.
 
 Em playwright.config.ts exclua a linha testDir: './e2e e faça a seguinte alteração:
+
+```
 projects: [
-{
-name: "e2e-chromium",
-testDir: "./tests/specs/e2e",
-use: { ...devices["Desktop Chrome"] },
-},
-{
-name: "smoke-chromium",
-testDir: "./tests/specs/smoke",
-use: { ...devices["Desktop Chrome"] },
-},
-{
-name: "regression-chromium",
-testDir: "./tests/specs/regression",
-use: { ...devices["Desktop Chrome"] },
-},
+    {
+      name: "e2e-chromium",
+      testDir: "./tests/specs/e2e",
+      use: { ...devices["Desktop Chrome"] },
+    },
+    {
+      name: "smoke-chromium",
+      testDir: "./tests/specs/smoke",
+      use: { ...devices["Desktop Chrome"] },
+    },
+    {
+      name: "regression-chromium",
+      testDir: "./tests/specs/regression",
+      use: { ...devices["Desktop Chrome"] },
+    },
 
-{
-name: "e2e-firefox",
-testDir: "./tests/specs/e2e",
-use: { ...devices["Desktop Firefox"] },
-},
-{
-name: "smoke-firefox",
-testDir: "./tests/specs/smoke",
-use: { ...devices["Desktop Firefox"] },
-},
-{
-name: "regression-firefox",
-testDir: "./tests/specs/regression",
-use: { ...devices["Desktop Firefox"] },
-},
+    {
+      name: "e2e-firefox",
+      testDir: "./specs/e2e",
+      use: { ...devices["Desktop Firefox"] },
+    },
+    {
+      name: "smoke-firefox",
+      testDir: "./specs/smoke",
+      use: { ...devices["Desktop Firefox"] },
+    },
+    {
+      name: "regression-firefox",
+      testDir: "./specs/regression",
+      use: { ...devices["Desktop Firefox"] },
+    },
 
-{
-name: "e2e-webkit",
-testDir: "./tests/specs/e2e",
-use: { ...devices["Desktop Safari"] },
-},
-{
-name: "smoke-webkit",
-testDir: "./tests/specs/smoke",
-use: { ...devices["Desktop Safari"] },
-},
-{
-name: "regression-webkit",
-testDir: "./tests/specs/regression",
-use: { ...devices["Desktop Safari"] },
-},
-],
+    {
+      name: "e2e-webkit",
+      testDir: "./specs/e2e",
+      use: { ...devices["Desktop Safari"] },
+    },
+    {
+      name: "smoke-webkit",
+      testDir: "./specs/smoke",
+      use: { ...devices["Desktop Safari"] },
+    },
+    {
+      name: "regression-webkit",
+      testDir: "./specs/regression",
+      use: { ...devices["Desktop Safari"] },
+    },
+  ],
+```
 
 Isso vai servir para separar a execução do jeito que desejar, filtrando por pastas e navegadores.
 
-Comando 2:
-
+```
 npm -i --save-dev @types/node
+```
 
 Esse comando instala tipos do Node.js para o Typescript, pois o Typescript não entende
 sozinho coisas do NodeJS como process, \_\_dirname..
 
 Além disso, será necessário configurar o arquivo tsconfig.json com:
+
+```
 {
-"compilerOptions": {
-"types": ["node", "@playwright/test"]
+   "compilerOptions": {
+   "types": ["node", "@playwright/test"]
+   }
 }
-}
+```
 
 Isso serve para o Typescript reconhecer as definições do node citadas acima e também do playwright, como, test(), expect()..
 
@@ -210,14 +222,15 @@ Crie um arquivo na raiz do projeto chamado .env e coloque as credenciais de logi
 USER_EMAIL=[Seu email aqui]
 USER_PASSWORD=[Sua senha aqui]
 
-Comando 3:
 Instale o dotenv
 
+```
 npm i dotenv
+```
 
 Não esqueça de adicionar o .env no .gitignore
 
-Além disso, no arquivo playwright.config.ts descomente o código:
+Além disso, no arquivo playwright.config.ts descomente o código:  
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -232,7 +245,9 @@ no modo headless e headed.
 
 Para rodar suítes em específico conforme o browser:
 
+```
 npx playwright test --project=e2e-chromium
+```
 
 Esse comando permite rodar apenas a suíte e2e com o chrome, por exemplo. Caso seja necessário rodar em outro
 navegador basta substituir o parâmetro chromium. Além disso, se desejar rodar outra suíte como regression ou
@@ -245,14 +260,23 @@ Além disso outro comando para rodar todos os testes é o seguinte:
 npx playwright test
 
 Há também o comando:
+
+```
 npx playwright show-report
+```
 
 Esse comando serve para visualizar o log do teste.
 
 ### Evidência dos testes
 
+Execução do teste no modo headless
+
 ![Execução do teste no modo headless](./evidencias/evidencia_headless.png)
 
+Execução do teste no modo headed com debug
+
 ![Execução do teste no modo headed com debug](./evidencias/evidencia_headed.png)
+
+Report do teste
 
 ![Report do teste](./evidencias/report.png)
