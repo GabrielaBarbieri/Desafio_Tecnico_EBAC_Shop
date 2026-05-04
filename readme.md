@@ -298,3 +298,33 @@ um print da tela. Já o vídeo grava um vídeo mostrando o erro e por fim o trac
 caso o teste falhe.
 
 Assim, você poderá ver no report do playwright o print, o vídeo e o trace.
+
+### Configuração para evitar teste Flakiness
+
+Alguns testes as vezes falham devido por exemplo a falhas de rede, para evitar isso é possível 
+usar retries, que serve para caso um teste falhar, rodar X vezes antes de marcar como falha de verdade.
+
+No playwright.config.ts configure o seguinte código
+
+```
+export default defineConfig({
+  retries: process.env.CI ? 1 : 0,
+})
+
+```
+
+Quando integrado a uma CI, como, Github Actions, ele vai tentar mais 1 vez antes de falhar. Localmente ele não vai tentar novamente,
+pois geralmente é investigado o erro na hora. Essa configuração já é pensando em integrar os testes a uma pipeline. Além disso, foram
+adicionadas tags nos testes pensando na integração também com a pipeline, que é um recurso que pode ser usado posteriormente. 
+
+### Testes automatizados
+
+Foram automatizados dois cenários de teste: um de login e outro de fluxo completo de compra (E2E).
+
+No teste de login, foi utilizado o padrão de Page Object de forma parcial, sem a separação de locators e assertions. Essa decisão foi intencional, com o objetivo de demonstrar a diferença em relação ao teste E2E.
+
+Já no teste de fluxo completo, foi aplicada uma estrutura mais robusta de Page Object Model, com a separação de responsabilidades em arquivos distintos: pages (ações), locators (seletores), assertions (validações) e testes. Essa abordagem evidencia como a organização do código facilita a manutenção e a escalabilidade da automação.
+
+Embora o exemplo de login seja simples, já é possível perceber que, mesmo em cenários menores, o acúmulo de responsabilidades em um único arquivo pode impactar a legibilidade. Em contrapartida, no teste E2E, a divisão em múltiplos arquivos torna o código mais modular, reutilizável e fácil de manter.
+
+Vale destacar que esse nível de separação é mais indicado para projetos de médio e grande porte. Em projetos menores, uma estrutura mais simples pode ser suficiente, desde que mantenha clareza e organização.

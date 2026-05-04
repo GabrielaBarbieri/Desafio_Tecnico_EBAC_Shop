@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { login, navigateToProductPage } from "../../flows/login.flow";
+import { loginPageFlow } from "../../flows/login.flow";
 import { User } from "../../fixtures/interfaces/login.model";
 import { ProductsPage } from "../../pages/products";
 import { CartPage } from "../../pages/cart";
@@ -8,7 +8,7 @@ import orderData from "../../fixtures/datas/order.json";
 import { CartAssertions } from "../../assertions/cart.assertions";
 import { CheckoutAssertions } from "../../assertions/checkout.assertions";
 
-test("Deve permitir ao usuário realizar o fluxo completo de compra com sucesso", async ({
+test("@e2e:Deve permitir ao usuário realizar o fluxo completo de compra com sucesso", async ({
   page,
 }) => {
   const user: User = {
@@ -16,8 +16,9 @@ test("Deve permitir ao usuário realizar o fluxo completo de compra com sucesso"
     password: process.env.USER_PASSWORD!,
   };
 
-  await login(page, user);
-  await navigateToProductPage(page);
+  const loginFlow = new loginPageFlow(page);
+  await loginFlow.login(page, user);
+  await loginFlow.navigateToProductPage(page);
 
   const productsPage = new ProductsPage(page);
   await productsPage.clickProduct();
