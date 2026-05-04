@@ -8,7 +8,7 @@ export class CheckoutPageElements {
   readonly lastNameInput: Locator;
   readonly addressInput: Locator;
   readonly cityInput: Locator;
-  readonly CEPInput: Locator;
+  readonly zipCodeInput: Locator;
   readonly phoneInput: Locator;
   readonly checkboxTerms: Locator;
   readonly placeOrderButton: Locator;
@@ -24,7 +24,7 @@ export class CheckoutPageElements {
     this.lastNameInput = page.locator("#billing_last_name");
     this.addressInput = page.locator("#billing_address_1");
     this.cityInput = page.locator("#billing_city");
-    this.CEPInput = page.locator("#billing_postcode");
+    this.zipCodeInput = page.locator("#billing_postcode");
     this.phoneInput = page.locator("#billing_phone");
     this.checkboxTerms = page.locator("#terms");
     this.placeOrderButton = page.locator("input", {

@@ -20,7 +20,7 @@ export class CheckoutPage {
     await this.elements.addressInput.scrollIntoViewIfNeeded();
     await this.elements.addressInput.fill(order.address);
     await this.elements.cityInput.fill(order.city);
-    await this.elements.CEPInput.fill(order.CEP);
+    await this.elements.zipCodeInput.fill(order.zipCode);
     await this.elements.phoneInput.fill(order.phone);
   }
   async acceptTermsAndPlaceOrder() {

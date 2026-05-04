@@ -4,7 +4,7 @@
         "lastName": "Wick",
         "address": "Avenida Paulista, 1000",
         "city": "São Paulo",
-        "CEP": "12345-678",
+        "zipCode": "12345-678",
         "phone": "4400 12343212"
     }
 }

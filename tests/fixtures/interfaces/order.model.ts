@@ -3,6 +3,6 @@ export type Order = {
   lastName: string;
   address: string;
   city: string;
-  CEP: string;
+  zipCode: string;
   phone: string;
 };
