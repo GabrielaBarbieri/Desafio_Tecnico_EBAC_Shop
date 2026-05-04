@@ -52,33 +52,33 @@ export default defineConfig({
 
     // {
     //   name: "e2e-firefox",
-    //   testDir: "./specs/e2e",
+    //   testDir: "./tests/specs/e2e",
     //   use: { ...devices["Desktop Firefox"] },
     // },
     // {
     //   name: "smoke-firefox",
-    //   testDir: "./specs/smoke",
+    //   testDir: "./tests/specs/smoke",
     //   use: { ...devices["Desktop Firefox"] },
     // },
     // {
     //   name: "regression-firefox",
-    //   testDir: "./specs/regression",
+    //   testDir: "./tests/specs/regression",
     //   use: { ...devices["Desktop Firefox"] },
     // },
 
     // {
     //   name: "e2e-webkit",
-    //   testDir: "./specs/e2e",
+    //   testDir: "./tests/specs/e2e",
     //   use: { ...devices["Desktop Safari"] },
     // },
     // {
     //   name: "smoke-webkit",
-    //   testDir: "./specs/smoke",
+    //   testDir: "./tests/specs/smoke",
     //   use: { ...devices["Desktop Safari"] },
     // },
     // {
     //   name: "regression-webkit",
-    //   testDir: "./specs/regression",
+    //   testDir: "./tests/specs/regression",
     //   use: { ...devices["Desktop Safari"] },
     // },
   ],
