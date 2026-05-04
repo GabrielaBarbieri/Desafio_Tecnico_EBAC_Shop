@@ -9,7 +9,5 @@ test("Realizar login na aplicação - Bem sucedido", async ({ page }) => {
   };
 
   await login(page, user);
-
-  // validação fica no teste (boa prática) - Melhorar validação
   await expect(page.locator("h1", { hasText: "Minha conta" })).toBeVisible();
 });

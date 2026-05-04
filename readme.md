@@ -133,33 +133,33 @@ projects: [
 
     {
       name: "e2e-firefox",
-      testDir: "./specs/e2e",
+      testDir: "./tests/specs/e2e",
       use: { ...devices["Desktop Firefox"] },
     },
     {
       name: "smoke-firefox",
-      testDir: "./specs/smoke",
+      testDir: "./tests/specs/smoke",
       use: { ...devices["Desktop Firefox"] },
     },
     {
       name: "regression-firefox",
-      testDir: "./specs/regression",
+      testDir: "./tests/specs/regression",
       use: { ...devices["Desktop Firefox"] },
     },
 
     {
       name: "e2e-webkit",
-      testDir: "./specs/e2e",
+      testDir: "./tests/specs/e2e",
       use: { ...devices["Desktop Safari"] },
     },
     {
       name: "smoke-webkit",
-      testDir: "./specs/smoke",
+      testDir: "./tests/specs/smoke",
       use: { ...devices["Desktop Safari"] },
     },
     {
       name: "regression-webkit",
-      testDir: "./specs/regression",
+      testDir: "./tests/specs/regression",
       use: { ...devices["Desktop Safari"] },
     },
   ],
@@ -188,7 +188,7 @@ Isso serve para o Typescript reconhecer as definições do node citadas acima e 
 
 ### Estrutura do Projeto
 
-Embora o site escolhido para automação não exiga uma estrutura de alta escalabilidade por
+Embora o site escolhido para automação não exija uma estrutura de alta escalabilidade por
 se tratar de um site simples, nesse projeto foi utilizado um padrão para projetos médios e complexos pensando em escalabilidade, legilidade e reutilização de código. Assim, para
 estrutura do projeto foi escolhido o padrão Page Objects Model (POM), para separar em pastas
 as ações do teste, as validações e os elementos. Além disso, também foi utilizado o padrão
@@ -280,3 +280,21 @@ Esse comando serve para visualizar o log do teste.
 **Report do teste**
 
 ![Report do teste](./evidencias/report.png)
+
+### Quando o teste der erro, o que fazer?
+
+No playwright.config.ts é necessário por a seguinte configuração:
+
+```
+use: {
+  screenshot: 'only-on-failure',
+  video: 'retain-on-failure',
+  trace: 'on-first-retry'
+}
+```
+
+Essas configurações vão servir quando o teste falhar, por exemplo, o screenshot vai tirar
+um print da tela. Já o vídeo grava um vídeo mostrando o erro e por fim o trace é um debug completo
+caso o teste falhe.
+
+Assim, você poderá ver no report do playwright o print, o vídeo e o trace.

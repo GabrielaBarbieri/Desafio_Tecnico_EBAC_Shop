@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { login } from "../../flows/login.flow";
+import { login, navigateToProductPage } from "../../flows/login.flow";
 import { User } from "../../fixtures/interfaces/login.model";
 import { ProductsPage } from "../../pages/products";
 import { CartPage } from "../../pages/cart";
@@ -11,13 +11,14 @@ import { CheckoutAssertions } from "../../assertions/checkout.assertions";
 test("Deve permitir ao usuário realizar o fluxo completo de compra com sucesso", async ({
   page,
 }) => {
-
   const user: User = {
     email: process.env.USER_EMAIL!,
     password: process.env.USER_PASSWORD!,
   };
 
   await login(page, user);
+  await navigateToProductPage(page);
+
   const productsPage = new ProductsPage(page);
   await productsPage.clickProduct();
   await productsPage.addProductToCart();
@@ -26,7 +27,7 @@ test("Deve permitir ao usuário realizar o fluxo completo de compra com sucesso"
   const cartAssertions = new CartAssertions(page);
   await cartPage.goToCart();
   await cartAssertions.cartPageIsVisible();
-  await cartPage.updateCartItemQuantity();  
+  await cartPage.updateCartItemQuantity();
 
   const checkoutPage = new CheckoutPage(page);
   const checkoutAssertions = new CheckoutAssertions(page);
@@ -35,7 +36,5 @@ test("Deve permitir ao usuário realizar o fluxo completo de compra com sucesso"
   await checkoutPage.fillCheckoutForm(orderData.order);
   await checkoutPage.acceptTermsAndPlaceOrder();
 
-  await checkoutAssertions.validateOrderReceived();   
+  await checkoutAssertions.validateOrderReceived();
 });
-
-//preciso melhorar depois a questão de separar locators e validações, para deixar o teste mais limpo e legível.

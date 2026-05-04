@@ -17,7 +17,6 @@ export class ProductsPage {
     await this.elements.size.click();
     await this.elements.color.click();
     await this.elements.addToCartButton.scrollIntoViewIfNeeded();
-    await this.page.screenshot({ path: "size-selected.png" });
     await this.elements.addToCartButton.click();
     await this.page.waitForLoadState("networkidle");
   }

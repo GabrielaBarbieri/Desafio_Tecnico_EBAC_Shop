@@ -14,8 +14,9 @@ export async function login(page: Page, user: User) {
   await page.locator('[name="login"]').click();
 
   await expect(page.locator("h1", { hasText: "Minha conta" })).toBeVisible();
+}
 
-  // Navegar para a página de produtos
+export async function navigateToProductPage(page: Page) {
   await page
     .locator(
       "//li[contains(., 'Minha conta')]/preceding-sibling::li/a[contains(text(), 'Home')]",
