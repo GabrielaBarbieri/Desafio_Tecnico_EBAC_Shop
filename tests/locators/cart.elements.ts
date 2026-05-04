@@ -9,12 +9,9 @@ export class CartElements {
 
   constructor(page: Page) {
     this.page = page;
-    this.goToCartButton = page.locator(
-      "//a[@title='View your shopping cart']/span[@class='text-skin cart-icon']",
-    );
-    this.viewCart = page.locator("(//a[contains(text(), 'View Cart')])[2]");
+    this.goToCartButton = page.locator('a[title="View your shopping cart"]');
+    this.viewCart = page.getByRole("link", { name: "View Cart" });
     this.cartPage = page.locator("h1", { hasText: "Carrinho" });
     this.quantityInput = page.locator('input[value="+"]');
   }
-
 }

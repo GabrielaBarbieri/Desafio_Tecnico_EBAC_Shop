@@ -17,9 +17,5 @@ export async function login(page: Page, user: User) {
 }
 
 export async function navigateToProductPage(page: Page) {
-  await page
-    .locator(
-      "//li[contains(., 'Minha conta')]/preceding-sibling::li/a[contains(text(), 'Home')]",
-    )
-    .click();
+  await page.locator(".breadcrumb li a").click();
 }
